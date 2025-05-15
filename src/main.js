@@ -2,31 +2,31 @@ import Vue from 'vue'
 
 import Cookies from 'js-cookie'
 
-import 'normalize.css/normalize.css' // a modern alternative to CSS resets
+import 'normalize.css/normalize.css' // CSS 重置的现代替代方案
 
 import Element from 'element-ui'
 import './styles/element-variables.scss'
 import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包请默认支持，无需额外引入，请删除该依赖
 
-import '@/styles/index.scss' // global css
+import '@/styles/index.scss' // 全局 CSS
 
 import App from './App'
 import store from './store'
 import router from './router'
 
-import './icons' // icon
-import './permission' // permission control
-import './utils/error-log' // error log
+import './icons' // 图标
+import './permission' // 权限控制
+import './utils/error-log' // 错误日志
 
-import * as filters from './filters' // global filters
+import * as filters from './filters' // 全局过滤器
 
 /**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
+ * 如果你不想使用 mock-server
+ * 你想使用 MockJs 作为 mock 数据
+ * 你可以执行: mockXHR()
  *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online ! ! !
+ * 目前 MockJs 将用于生产环境，
+ * 请在上线前删除它！！！
  */
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
@@ -34,11 +34,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium', // set element-ui default size
+  size: Cookies.get('size') || 'medium', // 设置 element-ui 默认大小
   locale: enLang // 如果使用中文，无需设置，请删除
 })
 
-// register global utility filters
+// 注册全局工具过滤器
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
